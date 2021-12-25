@@ -1,0 +1,47 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* Reset using "universal selector" */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* padding and borders are not added to the width/height of the element */
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+}
+
+/* note there are TWO background-image properties here:
+      1. the linear gradient
+      2. the 'hero' image to display
+      
+      The two properties are separated by a comma
+*/
+.header {
+    height: 95vh; /* should be 95% of the viewport height */
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba(126, 213, 111, 0.8), 
+        rgba(40, 180, 133, 0.8)), 
+    url(../img/hero.jpg);
+    background-size: cover; /* always try to fit image inside of the box */
+    background-position: top; /* element stays at the top of the container as viewport changes */
+
+    /* 
+    x,y coordinate pairs can be specified using any of the measurement units (e.g. px, vh, rem, etc.)
+    any number of x, y coordinate pairs can be used to create any polygon
+    */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
+}
