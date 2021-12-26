@@ -30,6 +30,7 @@ body {
       The two properties are separated by a comma
 */
 .header {
+    position: relative;
     height: 95vh; /* should be 95% of the viewport height */
     background-image: linear-gradient(
         to right bottom, 
@@ -44,4 +45,51 @@ body {
     any number of x, y coordinate pairs can be used to create any polygon
     */
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); 
+}
+
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px; /* width will automatically be scaled (or figured out) by the browser */
+}
+
+/* This "centers" the element within its parent container.  "Centers" is in quotes here because the top/left properties can
+be set to any value; the "centering magic" happens in the transform: translate() attribute.  The translate function allows
+us to start measuring from the center of the element (or where-ever we want, really - depending on the arguments we pass in
+to the translate function).
+
+  position: absolute sets up the absolute positioning so we can use top, left, bottom, rigtht to position this element
+    NOTE:  the parent container (or some ancestor) must have position; relativ for this element to measure itself against
+  top: how far the top of this element should be from the top of its container
+  left:  how far left this element should be from the left side of its container
+  transform:  the translate function says "remove half of my X width and half of my Y height"
+*/
+.header-text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
 }
