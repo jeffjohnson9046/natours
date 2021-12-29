@@ -72,12 +72,19 @@ to the translate function).
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* in relation to the element itself. */
 }
 
 .heading-primary {
     color: #fff;
     text-transform: uppercase;
+
+    /* this prevents the animation from being "shaky".  If you take this out, the 'header' will appear to move up by
+    1 pixel or so.
+
+    This determines if the 'back part' of the element should be visible (e.g. if you "flip" an element over like a card).
+     */
+    backface-visibility: hidden;
 }
 
 .heading-primary-main {
@@ -85,6 +92,18 @@ to the translate function).
     font-size: 60px;
     font-weight: 400;
     letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: 700ms;
+    animation-timing-function: ease-out;
+
+    /* determine the number of times the animation executes: 
+    animation-iteration-count: 3;
+    */
+    
+    /* specify the time before the animation starts:
+    animation-delay: 3s;
+    */
 }
 
 .heading-primary-sub {
@@ -92,4 +111,51 @@ to the translate function).
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17.4px;
+
+    /* shorthand for various animation properties */
+    animation: moveInRight 1s ease-out;
+}
+
+/* When animating, browsers are optimized for two properties::after
+ * opacity
+ * transform
+
+these animations can also be applied to pseudo-classes or pseudo-selectors (e.g. :hover, :focus, etc)
+*/
+@keyframes moveInLeft {
+    /* before the animation starts */
+    0% {
+        opacity: 0;
+        transform: translateX(-100px); /* x is left-to-right, positive goes left, negative goes right*/
+    }
+
+    /* add a bit of "bounce" to the animation before the animation completes*/ 
+    80%  {
+        transform: translateX(10px);
+    }
+
+    /* After animation completes */
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* before the animation starts */
+    0% {
+        opacity: 0;
+        transform: translateX(100px); /* x is left-to-right, positive goes left, negative goes right*/
+    }
+
+    /* add a bit of "bounce" to the animation before the animation completes*/ 
+    80%  {
+        transform: translateX(-10px);
+    }
+
+    /* After animation completes */
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
