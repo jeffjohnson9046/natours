@@ -233,9 +233,7 @@ these animations can also be applied to pseudo-classes or pseudo-selectors (e.g.
     animation: moveInBtn 0.5s ease-out 0.75s;
 
     /* this property applies the CSS properties of the "0%" animation.  In this case, the button will not be
-    visible until: 
-    
-      * the animation delay elapses
+    visible until the animation delay elapses and the animation starts.
     */
     animation-fill-mode: backwards;
 }
